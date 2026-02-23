@@ -2,7 +2,7 @@ export const horNavLinks = [
     { href: "/", label: "Home" },
     { href: "/projects", label: "Projects" },
     { href: "/poetry", label: "Poetry" }, 
-    { href: "/blog", label: "Blog" }, 
+    { href: "https://blog.seanchoo.dev", label: "Blog" }, 
 ];
 
 

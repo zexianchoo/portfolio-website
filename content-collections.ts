@@ -8,6 +8,8 @@ const projects = defineCollection({
   include: "**/*.md",
   schema: z.object({
     title: z.string(),
+    year: z.string().optional(),
+    order: z.number(), 
     thumbnail: z.string(),
     technologies: z.array(z.string()),
     summary: z.string(),
@@ -31,7 +33,7 @@ const experiences = defineCollection({
     role: z.string(),
     company: z.string(),
     technologies: z.array(z.string()),
-    order: z.number(), // Added this to control sorting
+    order: z.number(), 
     content: z.string(),
   }),
   transform: async (document, context) => {

@@ -2,7 +2,10 @@
 import { allProjects, allAbouts, allExperiences } from "content-collections";
 import { Link } from '@tanstack/react-router';
 import TechStack from "@/features/techstack/TechStack";
-
+const sortedFeaturedProjects = [...allProjects]
+  .sort((a, b) => a.order - b.order)
+  // .slice(0, 4); only show the top 4 on the home page
+  
 const aboutMe = allAbouts[0];
 const sortedExperiences = [...allExperiences].sort((a, b) => a.order - b.order);
 
@@ -12,10 +15,10 @@ export default function RightPanel() {
       {/* ABOUT */}
       <section 
         id="about" 
-        className="mb-16 scroll-mt-24 md:mb-24 lg:mb-36 lg:scroll-mt-24 pt-4"
+        className="mb-16 scroll-mt-24 md:mb-24 lg:mb-24 lg:scroll-mt-24 pt-4"
       >
         <h2 className="text-sm font-heading font-bold uppercase tracking-widest text-foreground mb-4">
-          About
+          About Me
         </h2>
         
         {/* Render About Me Markdown with nice vertical spacing */}
@@ -75,7 +78,7 @@ export default function RightPanel() {
           Projects
         </h2>
         <div className="group/list">
-          {allProjects.map((project) => (
+          {sortedFeaturedProjects.map((project) => (
             <div 
               key={project._meta.path} 
               className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:mb-12 lg:hover:opacity-100! lg:group-hover/list:opacity-50"
@@ -145,7 +148,7 @@ export default function RightPanel() {
         <TechStack />
       </section>
       {/* pure space */}
-      <div className="h-[10vh]" aria-hidden="true" />
+      <div className="h-[30vh]" aria-hidden="true" />
 
 
     </main>

@@ -23,18 +23,25 @@ function ProjectDetail() {
     <div className="mx-auto max-w-3xl px-6 py-24">
       <BackLink to="/projects" label="Back to Projects" />
       
-      {/* Header Section */}
       <header className="mb-12 border-b border-foreground/10 pb-12">
-        <h1 className="text-4xl font-bold font-heading text-foreground md:text-5xl">
+        {project.year && (
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent/80">
+            {project.year}
+          </p>
+        )}
+        
+        <h1 className="text-4xl font-bold font-heading text-foreground md:text-5xl mb-8">
           {project.title}
         </h1>
+
         {project.thumbnail && (
           <img 
-            src={project.thumbnail} 
+            src={`${project.thumbnail}`} 
             alt={project.title}
-            className="rounded-xl mb-8" 
+            className="rounded-xl mb-8 w-full object-cover border border-foreground/10 shadow-lg" 
           />
         )}
+
         {project.summary && (
           <p className="mt-4 text-xl text-foreground/60 leading-relaxed italic">
             {project.summary}
@@ -62,11 +69,11 @@ function ProjectDetail() {
           prose-li:text-foreground/80
           prose-strong:text-accent prose-strong:font-semibold
           prose-img:rounded-xl prose-img:border prose-img:border-foreground/10
+          prose-a:text-accent prose-a:no-underline hover:prose-a:underline
         `}
         dangerouslySetInnerHTML={{ __html: project.html }} 
       />
       
-      {/* Footer / Contact call to action maybe? */}
       <footer className="mt-20 border-t border-foreground/10 pt-10 text-center">
         <BackLink to="/projects" label="See more projects" />
       </footer>
