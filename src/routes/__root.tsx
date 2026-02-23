@@ -3,7 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 // import Header from '../components/Header'
-import NavBar from '../features/navbar/NavBar'
+import HorNavBar from '@/features/navbar/HorNav'
 import appCss from '../styles.css?url'
 
 const themeScript = `
@@ -50,7 +50,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} /> 
       </head>
       <body>
-        <NavBar />
+        <HorNavBar />
         {children}
         <TanStackDevtools
           config={{
