@@ -1,16 +1,17 @@
-import { iconUrls } from "./TechStackContentMap";
+import { allTechStacks } from "content-collections";
+const stack = allTechStacks[0];
 
 const TechStack = () => {
   return (
     <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-4 sm:p-6 transition-colors">
-      <p className="mb-4 text-sm font-heading font-bold uppercase tracking-widest text-foreground">
+      {/* <p className="mb-4 text-sm font-heading font-bold uppercase tracking-widest text-foreground">
         Tech Stack & Tools
-      </p>
-
+      </p> */}
+      
       <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-        {iconUrls.map((icon, index) => (
+        {stack.icons.map((icon) => (
           <a
-            key={index}
+            key={icon.desc}
             href={icon.href}
             target="_blank"
             rel="noopener noreferrer"

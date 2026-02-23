@@ -1,7 +1,6 @@
-// src/routes/projects/index.tsx
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { projects } from '@/features/projects/ProjectsContent'
-import { ArrowLeft } from 'lucide-react'
+import { allProjects } from 'content-collections'
+import BackLink from '@/components/BackLink'
 
 export const Route = createFileRoute('/projects/')({
   component: ProjectsArchive,
@@ -10,29 +9,39 @@ export const Route = createFileRoute('/projects/')({
 function ProjectsArchive() {
   return (
     <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24">
-      <Link to="/" className="group mb-8 inline-flex items-center font-semibold text-accent">
-        <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-2" />
-        Sean Choo Ze Xian
-      </Link>
+      <BackLink to="/" label="Back to Home" />
 
       <h1 className="text-4xl font-heading font-bold text-foreground mb-16">
-        Full Project Archive
+        All my projects! :3
       </h1>
 
       <div className="grid gap-16">
-        {projects.map((project) => (
-          <div key={project.id} className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-             <div className="md:col-span-4 text-xs font-semibold uppercase tracking-widest text-foreground/30">
-               {project.technologies.join(' / ')}
-             </div>
-             <div className="md:col-span-8">
-               <h2 className="text-xl font-heading font-bold text-foreground group-hover:text-accent">
-                 <Link to="/projects/$projectId" params={{ projectId: project.id }}>
-                   {project.title}
-                 </Link>
-               </h2>
-               <p className="mt-4 text-foreground/70">{project.description}</p>
-             </div>
+        {allProjects.map((project) => (
+          <div 
+            key={project._meta.path} 
+            className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 items-start p-4 transition-all lg:hover:bg-foreground/5 rounded-xl"
+          >
+            <div className="md:col-span-4 text-xs font-semibold uppercase tracking-widest text-foreground/50 relative z-10">
+              {project.technologies.join(' | ')}
+            </div>
+
+            <div className="md:col-span-8">
+              <h2 className="text-xl font-heading font-bold text-foreground group-hover:text-accent">
+                <Link 
+                  to="/projects/$projectId" 
+                  params={{ projectId: project._meta.path }}
+                  className="static before:absolute before:inset-0 before:z-0"
+                >
+                  {project.title}
+                </Link>
+              </h2>
+              
+              {project.summary && (
+                <p className="mt-2 text-foreground/60 line-clamp-2">
+                  {project.summary}
+                </p>
+              )}
+            </div>
           </div>
         ))}
       </div>
