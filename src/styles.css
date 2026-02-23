@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-color: var(--color-slate-900);    /* Deep slate background */
+  --text-color: var(--color-white);      /* White text */
+  --accent-color: var(--color-pink-400); /* Brighter pink to pop on dark background */
+}
+
+.light {
+  --bg-color: var(--color-slate-50);     /* Very light slate */
+  --text-color: var(--color-slate-900);  /* Dark slate text for readability */
+  --accent-color: var(--color-pink-600); /* Strong pink */
+}
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+
+  --color-background: var(--bg-color);
+  --color-foreground: var(--text-color);
+  --color-accent: var(--accent-color);
+}
+
+/* 5. Apply defaults to your base HTML elements */
+@layer base {
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    
+    /* Smooth transition when toggling modes */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+}

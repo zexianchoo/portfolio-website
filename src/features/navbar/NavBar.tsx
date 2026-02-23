@@ -1,0 +1,45 @@
+import coffeeCup from "../../assets/coffeeCup.webp";
+import LightDarkToggle from "@/components/LightDarkToggle";
+import { navLinks } from "./NavLinks";
+
+const NavBar = () => {
+  return (
+    <nav className="flex items-center justify-between p-3 mb-8 w-full rounded-xl bg-foreground/5 border border-foreground/10 backdrop-blur-md shadow-xl">
+
+        {/* Coffee Logo */}
+        <div className="flex-shrink-0 pl-2">
+            <a href='/' className="block transition-transform duration-200 hover:scale-105"> 
+                <img
+                    src={coffeeCup}
+                    alt='logo'
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 rounded-2xl hidden md:block object-cover"
+                /> 
+            </a>
+        </div>
+
+        {/* actual links */}
+        <div className="flex-1">
+            <ul className="flex flex-wrap justify-center items-center sm:gap-x-8">
+                {navLinks.map((item) => (
+                    <li key={item.label}>
+                        <a
+                            href={item.href}
+                            className="px-4 py-2 text-m font-heading font-semibold tracking-wide text-foreground/70 rounded-xl transition-all duration-300 hover:text-accent hover:bg-foreground/5 hover:scale-105 inline-block"
+                        >
+                            {item.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+        {/* Light / Dark */}
+        <div className="flex-shrink-0 pr-2">
+            <LightDarkToggle />
+        </div>
+    </nav>
+  );
+};
+
+export default NavBar;
