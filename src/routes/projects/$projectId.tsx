@@ -25,7 +25,7 @@ function ProjectDetail() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-24">
+    <div className="min-h-screen mx-auto max-w-3xl px-6 py-24">
       <BackLink to="/projects" label="Back to Projects" />
       
       <header className="mb-12 border-b border-foreground/10 pb-12">

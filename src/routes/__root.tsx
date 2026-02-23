@@ -8,7 +8,6 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import HorNavBar from '@/features/navbar/HorNav'
 import appCss from '../styles.css?url'
 
-// 3. Create a lazy-loaded wrapper for the devtools
 const LazyDevtools = import.meta.env.DEV
   ? React.lazy(() =>
       Promise.all([
@@ -78,7 +77,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         
         {children}
 
-        {/* 5. Render the lazy DevTools inside a Suspense boundary */}
         <Suspense fallback={null}>
           <LazyDevtools />
         </Suspense>

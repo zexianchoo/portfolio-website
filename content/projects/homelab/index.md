@@ -1,7 +1,7 @@
 ---
 title: "Homelab"
 summary: "A journay of a thousand miles begins with a single step"
-thumbnail: "/projects/homelab/thumbnail.webp"
+thumbnail: "/projects/homelab/thumbnail-small.webp"
 technologies: ["Kubernetes", "Helm", "ArgoCD","Tailscale", "Networking", "Proxmox"]
 year: "Ongoing"
 order: 1
