@@ -1,7 +1,6 @@
 services:
   web:
-    build: .
-    container_name: portfolio
+    image: ghcr.io/zexianchoo/portfolio-website:latest
     restart: unless-stopped
     ports:
       - "3000:3000"
