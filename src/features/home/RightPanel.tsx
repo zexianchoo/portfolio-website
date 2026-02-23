@@ -95,13 +95,19 @@ export default function RightPanel() {
               {/* Thumbnail Preview */}
               <div className="z-10 sm:col-span-2 mt-1 rounded border-2 border-foreground/10 transition group-hover:border-foreground/30 sm:order-1 overflow-hidden">
                 {project.thumbnail ? (
-                  <img 
-                    src={project.thumbnail} 
-                    alt={project.title} 
-                    loading="lazy" 
-                    decoding="async"
-                    className="h-full w-full object-cover aspect-video"
-                  />
+                  <Link 
+                    to="/projects/$projectId" 
+                    params={{ projectId: project._meta.path }}
+                    className=""
+                  >
+                    <img 
+                      src={project.thumbnail} 
+                      alt={project.title} 
+                      loading="lazy" 
+                      decoding="async"
+                      className="h-full w-full object-cover aspect-video"
+                    />
+                  </Link>
                 ) : (
                   <div className="bg-slate-800 h-16 w-full rounded flex items-center justify-center text-[10px] text-foreground/30 uppercase tracking-tighter">
                     Preview
@@ -125,7 +131,7 @@ export default function RightPanel() {
                   {project.summary}
                 </p>
 
-                <ul className="mt-4 flex flex-wrap gap-2 relative z-20">
+                <ul className="mt-4 flex flex-wrap gap-2 relative">
                   {project.technologies.map(tech => (
                     <li key={tech} className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
                       {tech}
