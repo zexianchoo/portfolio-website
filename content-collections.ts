@@ -72,6 +72,27 @@ const techStack = defineCollection({
   }),
 });
 
+const poems = defineCollection({
+  name: "poems",
+  directory: "content/poetry",
+  include: "**/*.md",
+  schema: z.object({
+    title: z.string(),
+    date: z.string().optional(),
+    order: z.number(), 
+    thumbnail: z.string().optional(),
+    summary: z.string(),
+    content: z.string(),
+  }),
+  transform: async (document, context) => {
+    const html = await compileMarkdown(context, document);
+    return {
+      ...document,
+      html,
+    };
+  },
+});
+
 export default defineConfig({
-  content: [projects, experiences, about, techStack],
+  content: [projects, experiences, about, techStack, poems],
 });
