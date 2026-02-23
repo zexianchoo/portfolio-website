@@ -1,6 +1,7 @@
 import { aboutMe, experiences } from "@/features/home/RightPanelContentMaps";
 import { projects } from "@/features/projects/ProjectsContent"
 import { Link } from '@tanstack/react-router';
+import TechStack from "@/features/techstack/TechStack";
 
 export default function RightPanel() {
   return (
@@ -100,9 +101,14 @@ export default function RightPanel() {
           ))}
         </div>
       </section>
-
+      
+      <section id="techStack" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+        <TechStack />
+      </section>
       {/* pure space */}
       <div className="h-[20vh]" aria-hidden="true" />
+
+
     </main>
   );
 }

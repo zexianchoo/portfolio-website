@@ -5,12 +5,17 @@
   --bg-color: var(--color-slate-900);    /* Deep slate background */
   --text-color: var(--color-white);      /* White text */
   --accent-color: var(--color-pink-400); /* Brighter pink to pop on dark background */
+  --low-contrast-filter: invert(1) brightness(200%) opacity(0.6);
 }
 
 .light {
   --bg-color: var(--color-slate-50);     /* Very light slate */
   --text-color: var(--color-slate-900);  /* Dark slate text for readability */
   --accent-color: var(--color-pink-600); /* Strong pink */
+}
+
+html.light {
+  --low-contrast-filter: invert(0) brightness(100%) opacity(1);
 }
 
 @theme {
