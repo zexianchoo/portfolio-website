@@ -49,6 +49,11 @@ export const Route = createRootRoute({
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Sean Choo | Portfolio' },
+      { property: 'og:title', content: 'Sean Choo | Backend & Infra Engineer' },
+      { property: 'og:description', content: 'I build backend systems and k8s homelabs.' },
+      { property: 'og:image', content: 'https://seanchoo.dev/me.webp' },
+      { property: 'og:url', content: 'https://seanchoo.dev' },
+      { property: 'og:type', content: 'website' },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },

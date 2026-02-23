@@ -8,11 +8,31 @@ export const Route = createFileRoute('/projects/$projectId')({
     const project = allProjects.find((p) => p._meta.path === params.projectId)
     return { project }
   },
+  head: ({ loaderData }) => {
+    if (!loaderData?.project) {
+      return {
+        meta: [{ title: 'Project Not Found | Sean Choo' }]
+      }
+    }
+    const { project } = loaderData
+    return {
+      meta: [
+        { property: 'og:title', content: `${project.title} | Sean Choo` },
+        { property: 'og:description', content: project.summary || 'Engineering project' },
+        { 
+          property: 'og:image', 
+          content: project.thumbnail ? `https://seanchoo.dev${project.thumbnail}` : 'https://seanchoo.dev/og-default.webp' 
+        },
+        { property: 'og:type', content: 'article' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+      ],
+    }
+  },
   component: ProjectDetail,
 })
 
+
 function ProjectDetail() {
-  // 2. We consume the pre-fetched data here instead of filtering the array during render
   const { project } = Route.useLoaderData()
 
   if (!project) {
@@ -87,3 +107,4 @@ function ProjectDetail() {
     </div>
   )
 }
+
