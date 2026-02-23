@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
+import { Route as PoetryIndexRouteImport } from './routes/poetry/index'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
+import { Route as PoetryPoetryIdRouteImport } from './routes/poetry/$poetryId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,39 +25,73 @@ const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   path: '/projects/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoetryIndexRoute = PoetryIndexRouteImport.update({
+  id: '/poetry/',
+  path: '/poetry/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   id: '/projects/$projectId',
   path: '/projects/$projectId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoetryPoetryIdRoute = PoetryPoetryIdRouteImport.update({
+  id: '/poetry/$poetryId',
+  path: '/poetry/$poetryId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/poetry/$poetryId': typeof PoetryPoetryIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/poetry/': typeof PoetryIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/poetry/$poetryId': typeof PoetryPoetryIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/poetry': typeof PoetryIndexRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/poetry/$poetryId': typeof PoetryPoetryIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/poetry/': typeof PoetryIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects/$projectId' | '/projects/'
+  fullPaths:
+    | '/'
+    | '/poetry/$poetryId'
+    | '/projects/$projectId'
+    | '/poetry/'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects/$projectId' | '/projects'
-  id: '__root__' | '/' | '/projects/$projectId' | '/projects/'
+  to:
+    | '/'
+    | '/poetry/$poetryId'
+    | '/projects/$projectId'
+    | '/poetry'
+    | '/projects'
+  id:
+    | '__root__'
+    | '/'
+    | '/poetry/$poetryId'
+    | '/projects/$projectId'
+    | '/poetry/'
+    | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PoetryPoetryIdRoute: typeof PoetryPoetryIdRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
+  PoetryIndexRoute: typeof PoetryIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -75,6 +111,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/poetry/': {
+      id: '/poetry/'
+      path: '/poetry'
+      fullPath: '/poetry/'
+      preLoaderRoute: typeof PoetryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/$projectId': {
       id: '/projects/$projectId'
       path: '/projects/$projectId'
@@ -82,12 +125,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/poetry/$poetryId': {
+      id: '/poetry/$poetryId'
+      path: '/poetry/$poetryId'
+      fullPath: '/poetry/$poetryId'
+      preLoaderRoute: typeof PoetryPoetryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PoetryPoetryIdRoute: PoetryPoetryIdRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
+  PoetryIndexRoute: PoetryIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport

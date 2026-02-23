@@ -3,7 +3,7 @@ const stack = allTechStacks[0];
 
 const TechStack = () => {
   return (
-    <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-4 sm:p-6 transition-colors">
+    <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-2 sm:p-4 transition-colors">
       {/* <p className="mb-4 text-sm font-heading font-bold uppercase tracking-widest text-foreground">
         Tech Stack & Tools
       </p> */}

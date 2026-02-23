@@ -74,9 +74,16 @@ export default function RightPanel() {
 
       {/* PROJECTS */}
       <section id="projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
-        <h2 className="text-sm font-heading font-bold uppercase tracking-widest text-foreground mb-4">
-          Projects
-        </h2>
+        <div className="mb-4">
+          <Link 
+            to="/projects" 
+            className="text-sm font-heading font-bold uppercase tracking-widest text-foreground"
+          >
+            <span>PROJECTS</span>
+          </Link>
+        </div>
+        
+
         <div className="group/list">
           {sortedFeaturedProjects.map((project) => (
             <div 

@@ -1,5 +1,5 @@
 import VerticalNav from "@/features/navbar/VerticalNav";
-import LightDarkToggle from "@/components/LightDarkToggle";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function LeftPanel() {
   return (
@@ -26,6 +26,7 @@ export default function LeftPanel() {
             I build backend systems for work but I'm secretly a k8s homelab merchant
           </p>
           
+
           <div className="mt-12">
             <VerticalNav />
           </div>
@@ -33,7 +34,7 @@ export default function LeftPanel() {
       </div>
 
       <div className="mt-8 flex justify-center lg:justify-start items-center gap-4">
-        <LightDarkToggle />
+        <SocialLinks />
       </div>
       
     </header>

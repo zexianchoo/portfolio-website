@@ -37,7 +37,7 @@ export default function LightDarkToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg transition-colors duration-200 hover:bg-slate-200 dark:hover:bg-slate-800 text-foreground hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
+      className="p-2 rounded-lg cursor-pointer transition-colors duration-200 hover:bg-slate-200 dark:hover:bg-slate-800 text-foreground hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
       aria-label="Toggle light dark mode"
     >
       {isLightMode ? (
