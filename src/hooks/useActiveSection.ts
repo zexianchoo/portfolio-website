@@ -3,15 +3,23 @@ import { useState, useEffect } from 'react';
 
 export function useActiveSection(sectionIds: string[]) {
   const [activeSection, setActiveSection] = useState('');
+  
+  const idsString = sectionIds.join(',');
 
   useEffect(() => {
+    const currentSectionIds = idsString.split(',');
+    let isThrottled = false;
+
     const handleScroll = () => {
-      
-      // If we hit the bottom of the page, force the last section to be active
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
-        setActiveSection(sectionIds[sectionIds.length - 1]);
-        return;
-      }
+      if (isThrottled) return;
+      isThrottled = true;
+
+      setTimeout(() => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+          setActiveSection(currentSectionIds[currentSectionIds.length - 1]);
+        }
+        isThrottled = false;
+      }, 100); 
     };
 
     const observer = new IntersectionObserver(
@@ -28,18 +36,18 @@ export function useActiveSection(sectionIds: string[]) {
       }
     );
 
-    sectionIds.forEach((id) => {
+    currentSectionIds.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
     });
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [sectionIds]);
+  }, [idsString]);
 
   return activeSection;
 }

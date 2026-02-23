@@ -3,11 +3,15 @@ import BackLink from '@/components/BackLink'
 import { allPoems } from 'content-collections';
 
 export const Route = createFileRoute('/poetry/')({
+    loader: () => {
+      const sortedPoems = [...allPoems].sort((a, b) => a.order - b.order);
+      return { sortedPoems };
+    },
   component: PoetryArchive,
 })
 
 function PoetryArchive() {
-  const sortedPoems = [...allPoems].sort((a, b) => a.order - b.order);
+  const { sortedPoems } = Route.useLoaderData();
 
   return (
     <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24">
@@ -50,6 +54,8 @@ function PoetryArchive() {
                   <img 
                     src={`${poem.thumbnail}`} 
                     alt={poem.title} 
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (

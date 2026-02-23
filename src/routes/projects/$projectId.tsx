@@ -1,14 +1,19 @@
+// $projectId.tsx
 import { createFileRoute } from '@tanstack/react-router'
 import BackLink from '@/components/BackLink'
 import { allProjects } from "content-collections";
 
 export const Route = createFileRoute('/projects/$projectId')({
+  loader: ({ params }) => {
+    const project = allProjects.find((p) => p._meta.path === params.projectId)
+    return { project }
+  },
   component: ProjectDetail,
 })
 
 function ProjectDetail() {
-  const { projectId } = Route.useParams()
-  const project = allProjects.find((p) => p._meta.path === projectId)
+  // 2. We consume the pre-fetched data here instead of filtering the array during render
+  const { project } = Route.useLoaderData()
 
   if (!project) {
     return (
@@ -38,6 +43,8 @@ function ProjectDetail() {
           <img 
             src={`${project.thumbnail}`} 
             alt={project.title}
+            decoding="async"
+            fetchPriority="high"
             className="rounded-xl mb-8 w-full object-cover border border-foreground/10 shadow-lg" 
           />
         )}

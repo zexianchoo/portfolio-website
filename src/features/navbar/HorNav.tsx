@@ -13,6 +13,8 @@ const HorNavBar = () => {
                 <img
                     src={coffeeCup}
                     alt='logo'
+                    fetchPriority="high"
+                    decoding="async"
                     width={48}
                     height={48}
                     className="w-12 h-12 rounded-2xl hidden md:block object-cover"

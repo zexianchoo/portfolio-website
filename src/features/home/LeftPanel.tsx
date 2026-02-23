@@ -10,7 +10,9 @@ export default function LeftPanel() {
         <div className="group mb-8 h-48 w-48 overflow-hidden rounded-full border-4 border-foreground/10 shadow-2xl sm:h-72 sm:w-72 transition-all hover:border-accent/20 mx-auto lg:mx-0">
           <img 
             src="/me.webp" 
-            alt="Sean Choo Ze Xian" 
+            alt="Sean Choo Ze Xian"
+            fetchPriority="high"
+            decoding="async" 
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
         </div>

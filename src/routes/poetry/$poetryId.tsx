@@ -3,12 +3,15 @@ import BackLink from '@/components/BackLink'
 import { allPoems } from "content-collections";
 
 export const Route = createFileRoute('/poetry/$poetryId')({
+  loader: ({ params }) => {
+      const poem = allPoems.find((p) => p._meta.path === params.poetryId)
+      return { poem }
+    },
   component: PoemDetail,
 })
 
 function PoemDetail() {
-  const { poetryId } = Route.useParams()
-  const poem = allPoems.find((p) => p._meta.path === poetryId)
+  const { poem } = Route.useLoaderData()
 
   if (!poem) {
     return (
@@ -51,6 +54,8 @@ function PoemDetail() {
                 <img 
                   src={`${poem.thumbnail}`} 
                   alt={poem.title}
+                  fetchPriority="high"
+                  decoding="async"
                   className="relative rounded-2xl w-full max-w-md mx-auto lg:mx-0 object-cover 
                             grayscale-30 contrast-110 brightness-90
                             sepia-20 opacity-80 transition-all duration-700

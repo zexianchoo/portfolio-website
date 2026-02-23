@@ -4,9 +4,6 @@ const stack = allTechStacks[0];
 const TechStack = () => {
   return (
     <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-2 sm:p-4 transition-colors">
-      {/* <p className="mb-4 text-sm font-heading font-bold uppercase tracking-widest text-foreground">
-        Tech Stack & Tools
-      </p> */}
       
       <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
         {stack.icons.map((icon) => (
@@ -20,6 +17,8 @@ const TechStack = () => {
             <img
               src={icon.url}
               alt={icon.desc}
+              loading="lazy"
+              decoding="async"
               style={{
                 filter: icon.lowContrastOnDark ? "var(--low-contrast-filter)" : "none",
               }}

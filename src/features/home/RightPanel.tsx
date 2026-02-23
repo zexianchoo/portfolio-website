@@ -98,6 +98,8 @@ export default function RightPanel() {
                   <img 
                     src={project.thumbnail} 
                     alt={project.title} 
+                    loading="lazy" 
+                    decoding="async"
                     className="h-full w-full object-cover aspect-video"
                   />
                 ) : (
@@ -109,7 +111,6 @@ export default function RightPanel() {
 
               <div className="z-10 sm:col-span-6 sm:order-2">
                 <h3 className="font-medium leading-snug text-foreground font-heading group-hover:text-accent">
-                  {/* 2. Update Link to use TanStack params and _meta.path */}
                   <Link 
                     to="/projects/$projectId" 
                     params={{ projectId: project._meta.path }}

@@ -1,13 +1,18 @@
+// index.tsx
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { allProjects } from 'content-collections'
 import BackLink from '@/components/BackLink'
 
 export const Route = createFileRoute('/projects/')({
+  loader: () => {
+    const sortedProjects = [...allProjects].sort((a, b) => a.order - b.order);
+    return { sortedProjects };
+  },
   component: ProjectsArchive,
 })
 
 function ProjectsArchive() {
-  const sortedProjects = [...allProjects].sort((a, b) => a.order - b.order);
+  const { sortedProjects } = Route.useLoaderData();
 
   return (
     <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24">
@@ -39,6 +44,9 @@ function ProjectsArchive() {
                   <img 
                     src={`${project.thumbnail}`} 
                     alt={project.title} 
+                    // 3. Defer loading for images further down the page
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
@@ -51,6 +59,7 @@ function ProjectsArchive() {
             {/* CONTENT */}
             <div className="md:col-span-7">
               <h2 className="text-2xl font-heading font-bold text-foreground group-hover:text-accent">
+                {/* TanStack <Link> automatically pre-fetches the loader data of the destination! */}
                 <Link 
                   to="/projects/$projectId" 
                   params={{ projectId: project._meta.path }}
