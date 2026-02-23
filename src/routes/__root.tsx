@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-// 1. Add ScrollRestoration to your TanStack imports
+import FourOhFour from '@/components/404'
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
 // import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
@@ -53,9 +53,17 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
+      { 
+        rel: 'preload', 
+        href: '/fonts/inter-v20-latin-regular.woff2', 
+        as: 'font', 
+        type: 'font/woff2', 
+        crossOrigin: 'anonymous' 
+      },
     ],
   }),
   shellComponent: RootDocument,
+  notFoundComponent: FourOhFour,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
