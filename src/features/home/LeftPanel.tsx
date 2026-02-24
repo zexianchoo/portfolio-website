@@ -13,7 +13,7 @@ export default function LeftPanel() {
             srcSet="/me-small.webp 400w, /me.webp 800w"
             alt="Sean Choo Ze Xian"
             fetchPriority="high"
-            decoding="async" 
+            decoding="sync" 
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
         </div>
