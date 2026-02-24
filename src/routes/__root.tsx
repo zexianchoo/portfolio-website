@@ -1,12 +1,13 @@
 import React, { Suspense } from 'react'
 import FourOhFour from '@/components/404'
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import styles from '../styles.css?inline'
 
 // import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 // import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import HorNavBar from '@/features/navbar/HorNav'
-import appCss from '../styles.css?url'
+// import appCss from '../styles.css?url'
 
 const LazyDevtools = import.meta.env.DEV
   ? React.lazy(() =>
@@ -56,7 +57,7 @@ export const Route = createRootRoute({
       { property: 'og:type', content: 'website' },
     ],
     links: [
-      { rel: 'stylesheet', href: appCss },
+      // { rel: 'stylesheet', href: appCss },
       { 
         rel: 'preload', 
         href: '/fonts/inter-v20-latin-regular.woff2', 
@@ -75,7 +76,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} /> 
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <style dangerouslySetInnerHTML={{ __html: styles }} /> 
       </head>
       <body>
         <HorNavBar />
