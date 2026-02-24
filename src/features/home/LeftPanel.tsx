@@ -43,3 +43,19 @@ export default function LeftPanel() {
     </header>
   );
 }
+
+export function LeftPanelSkeleton() {
+  return (
+    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24 animate-pulse">
+      <div className="flex flex-col items-center lg:items-start">
+        {/* Skeleton for the profile image */}
+        <div className="mb-8 h-48 w-48 rounded-full bg-foreground/10 sm:h-72 sm:w-72" />
+        
+        {/* Skeleton for text */}
+        <div className="h-10 w-64 bg-foreground/10 mb-3 rounded" />
+        <div className="h-6 w-48 bg-foreground/10 mb-4 rounded" />
+        <div className="h-4 w-full max-w-xs bg-foreground/10 rounded" />
+      </div>
+    </header>
+  )
+}

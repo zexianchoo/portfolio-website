@@ -60,6 +60,13 @@ export const Route = createRootRoute({
       // { rel: 'stylesheet', href: appCss },
       { 
         rel: 'preload', 
+        as: 'image', 
+        href: '/me.webp', 
+        imageSrcSet: '/me-small.webp 400w, /me.webp 800w',
+        fetchPriority: 'high' 
+      },
+      { 
+        rel: 'preload', 
         href: '/fonts/inter-v20-latin-regular.woff2', 
         as: 'font', 
         type: 'font/woff2', 
