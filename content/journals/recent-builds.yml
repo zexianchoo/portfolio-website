@@ -1,0 +1,31 @@
+articles:
+  - title: "AOC Media Control!!"
+    date: "Aug 3, 2026"
+    order: 1
+    url: "https://blog.seanchoo.dev/posts/aoc-media-control/"
+    summary: "turning a random portable monitor into a photo frame, airplay receiver and spotify player"
+    technologies: ["Raspberry Pi", "SwiftUI", "Golang"]
+  - title: "E-Ink Messenger"
+    date: "Aug 3, 2026"
+    order: 2
+    url: "https://blog.seanchoo.dev/posts/eink-messenger/"
+    summary: "sending cute little drawings through the most complicated route possible"
+    technologies: ["ESP32", "SwiftUI", "Golang"]
+  - title: "Homelab!! Part 2"
+    date: "Aug 2, 2026"
+    order: 3
+    url: "https://blog.seanchoo.dev/posts/homelab-migration-2026/"
+    summary: "the migration arc (this is taking forever)"
+    technologies: ["Proxmox", "Kubernetes", "GitOps"]
+  - title: "TodoChoo."
+    date: "Aug 1, 2026"
+    order: 4
+    url: "https://blog.seanchoo.dev/posts/todochoo/"
+    summary: "surely a todo app did not need all of this"
+    technologies: ["Golang", "SwiftUI", "MCP"]
+  - title: "ESP32 Commute Display"
+    date: "Jul 18, 2026"
+    order: 5
+    url: "https://blog.seanchoo.dev/posts/bus-esp32/"
+    summary: "i got tired of checking three transit apps every morning"
+    technologies: ["ESP32", "E-Ink", "C++"]

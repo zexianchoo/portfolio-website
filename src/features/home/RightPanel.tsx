@@ -2,6 +2,7 @@
 import { allProjects, allAbouts, allExperiences } from "content-collections";
 import { Link } from '@tanstack/react-router';
 import TechStack from "@/features/techstack/TechStack";
+import BuildJournals from "@/features/journals/BuildJournals";
 const sortedFeaturedProjects = [...allProjects]
   .sort((a, b) => a.order - b.order)
   // .slice(0, 4); only show the top 4 on the home page
@@ -153,6 +154,24 @@ export default function RightPanel() {
             <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">→</span>
           </Link>
         </div>
+      </section>
+
+      {/* BUILD JOURNALS */}
+      <section id="journals" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+        <div className="mb-6 flex items-baseline justify-between gap-4">
+          <h2 className="text-sm font-heading font-bold uppercase tracking-widest text-foreground">
+            Build Journals
+          </h2>
+          <a
+            href="https://blog.seanchoo.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-semibold text-foreground/50 transition-colors hover:text-accent"
+          >
+            All posts ↗
+          </a>
+        </div>
+        <BuildJournals />
       </section>
       
       <section id="techStack" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">

@@ -72,6 +72,23 @@ const techStack = defineCollection({
   }),
 });
 
+const buildJournals = defineCollection({
+  name: "buildJournals",
+  directory: "content/journals",
+  include: "*.yml",
+  parser: "yaml",
+  schema: z.object({
+    articles: z.array(z.object({
+      title: z.string(),
+      date: z.string(),
+      order: z.number(),
+      url: z.string().url(),
+      summary: z.string(),
+      technologies: z.array(z.string()),
+    })),
+  }),
+});
+
 const poems = defineCollection({
   name: "poems",
   directory: "content/poetry",
@@ -94,5 +111,5 @@ const poems = defineCollection({
 });
 
 export default defineConfig({
-  content: [projects, experiences, about, techStack, poems],
+  content: [projects, experiences, about, techStack, buildJournals, poems],
 });

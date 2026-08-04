@@ -10,5 +10,6 @@ export const vertNavLinks = [
     { href: "#about", label: "About" },
     { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
+    { href: "#journals", label: "Build Journals" },
     { href: "#techStack", label: "Tech Stack" },
 ];
