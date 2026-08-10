@@ -9,6 +9,39 @@ const sortedFeaturedProjects = [...allProjects]
 const aboutMe = allAbouts[0];
 const sortedExperiences = [...allExperiences].sort((a, b) => a.order - b.order);
 
+const recentBuildPosts = [
+  {
+    title: 'TodoChoo',
+    description: 'A task manager built around a calm daily workflow.',
+    href: 'https://blog.seanchoo.dev/posts/todochoo/',
+  },
+  {
+    title: 'E-Ink Messenger',
+    description: 'A tiny message composer and connected display experiment.',
+    href: 'https://blog.seanchoo.dev/posts/eink-messenger/',
+  },
+  {
+    title: 'AOC Media Control',
+    description: 'A private iPhone remote for a small Raspberry Pi media setup.',
+    href: 'https://blog.seanchoo.dev/posts/aoc-media-control/',
+  },
+  {
+    title: 'ESP32 Commute Display',
+    description: 'A glanceable transit display for the morning commute.',
+    href: 'https://blog.seanchoo.dev/posts/bus-esp32/',
+  },
+  {
+    title: 'Pidgty',
+    description: 'A shared space for couples to chat, plan, and keep small memories.',
+    href: 'https://blog.seanchoo.dev/posts/pidgty/',
+  },
+  {
+    title: 'Homelab Part 2',
+    description: 'What actually happened during a careful homelab migration.',
+    href: 'https://blog.seanchoo.dev/posts/homelab-migration-2026/',
+  },
+];
+
 export default function RightPanel() {
   return (
     <main className="pt-24 lg:w-1/2 lg:py-24 gap-y-10">
@@ -153,6 +186,51 @@ export default function RightPanel() {
             <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">→</span>
           </Link>
         </div>
+      </section>
+
+      {/* RECENT BUILD NOTES */}
+      <section id="writing" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+        <div className="mb-4">
+          <a
+            href="https://blog.seanchoo.dev"
+            className="text-sm font-heading font-bold uppercase tracking-widest text-foreground hover:text-accent"
+          >
+            Writing
+          </a>
+          <p className="mt-2 text-sm leading-normal text-foreground/70">
+            Notes and demos from the things I&apos;ve been building lately.
+          </p>
+        </div>
+
+        <div className="group/list">
+          {recentBuildPosts.map((post) => (
+            <a
+              key={post.href}
+              href={post.href}
+              className="group relative grid pb-5 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:mb-5 lg:hover:opacity-100! lg:group-hover/list:opacity-50"
+            >
+              <div className="absolute -inset-x-4 -inset-y-3 z-0 hidden rounded-md transition lg:-inset-x-6 lg:block lg:group-hover:bg-foreground/5" />
+              <span className="z-10 pt-1 text-xs font-semibold uppercase tracking-wide text-foreground/50 sm:col-span-2">
+                Build note
+              </span>
+              <div className="z-10 sm:col-span-6">
+                <h3 className="font-heading font-medium leading-snug text-foreground group-hover:text-accent">
+                  {post.title} <span aria-hidden="true">↗</span>
+                </h3>
+                <p className="mt-2 text-sm leading-normal text-foreground/70">
+                  {post.description}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <a
+          href="https://blog.seanchoo.dev"
+          className="mt-7 inline-flex items-center font-semibold text-foreground transition-colors hover:text-accent"
+        >
+          Read all build notes <span className="ml-1">→</span>
+        </a>
       </section>
       
       <section id="techStack" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
