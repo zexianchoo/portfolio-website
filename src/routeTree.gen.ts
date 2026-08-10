@@ -10,19 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
 import { Route as PoetryIndexRouteImport } from './routes/poetry/index'
-import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
 import { Route as PoetryPoetryIdRouteImport } from './routes/poetry/$poetryId'
+import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
+import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
-  id: '/projects/',
-  path: '/projects/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PoetryIndexRoute = PoetryIndexRouteImport.update({
@@ -30,14 +25,19 @@ const PoetryIndexRoute = PoetryIndexRouteImport.update({
   path: '/poetry/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
-  id: '/projects/$projectId',
-  path: '/projects/$projectId',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PoetryPoetryIdRoute = PoetryPoetryIdRouteImport.update({
   id: '/poetry/$poetryId',
   path: '/poetry/$poetryId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
+  id: '/projects/$projectId',
+  path: '/projects/$projectId',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -73,11 +73,7 @@ export interface FileRouteTypes {
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/poetry/$poetryId'
-    | '/projects/$projectId'
-    | '/poetry'
-    | '/projects'
+    '/' | '/poetry/$poetryId' | '/projects/$projectId' | '/poetry' | '/projects'
   id:
     | '__root__'
     | '/'
@@ -104,13 +100,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/': {
-      id: '/projects/'
-      path: '/projects'
-      fullPath: '/projects/'
-      preLoaderRoute: typeof ProjectsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/poetry/': {
       id: '/poetry/'
       path: '/poetry'
@@ -118,18 +107,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PoetryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/$projectId': {
-      id: '/projects/$projectId'
-      path: '/projects/$projectId'
-      fullPath: '/projects/$projectId'
-      preLoaderRoute: typeof ProjectsProjectIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/poetry/$poetryId': {
       id: '/poetry/$poetryId'
       path: '/poetry/$poetryId'
       fullPath: '/poetry/$poetryId'
       preLoaderRoute: typeof PoetryPoetryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/$projectId': {
+      id: '/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/projects/$projectId'
+      preLoaderRoute: typeof ProjectsProjectIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
